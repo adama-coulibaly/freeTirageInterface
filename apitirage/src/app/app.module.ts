@@ -9,6 +9,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { PostulantComponent } from './postulant/postulant.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TirageComponent } from './tirage/tirage.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TirageComponent } from './tirage/tirage.component';
     MenuComponent,
     AccueilComponent,
     PostulantComponent,
-    TirageComponent
+    TirageComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
