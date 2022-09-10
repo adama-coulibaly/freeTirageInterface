@@ -1,7 +1,27 @@
 <main>
+    
+    <div class="lesPostulants row ">
+        <div class="col-8">
+            <h1>La liste des postulants</h1>
+        </div>
+        <div class="col-3">
+          <input type="search" id="form1" class="form-control" placeholder="Recherce..." />
+        </div>
+       
+         <div class="col-1">
+            <button type="button" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+            </button>
+        </div>
+       
+      </div>
+    
     <section>
-    <table >
-        <thead>La liste des Postulants</thead>
+    
+    <table class="table container">
+      
         <tbody>
             <th>N°</th> <th>Nom</th> <th>Prénom</th> <th>Email</th> <th>Numéro</th>
             <tr *ngFor="let tirage of tirages">
@@ -14,8 +34,7 @@
         </tbody>
 
     </table>
-   
-</section>
+  </section>
 </main>
 
 
