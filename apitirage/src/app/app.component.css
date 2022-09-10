@@ -1,0 +1,73 @@
+.sidebarO{
+    margin-top:10%;
+    position: fixed;
+}
+/* Les items de mon menu : ITEM 1 */
+.lesItems .item_1{
+   
+position : absolute ;
+width : 100% ;
+height : 15% ;
+left : 0px ;
+top : 20% ;
+background : #FFFFFF;
+box-shadow : 0px 4px 4px #FF6B00 ;
+border-radius : 0px ;
+}
+/*  Les items de mon menu : ITEM 2 */
+.lesItems .item_2{
+    position : absolute ;
+    width : 100% ;
+    height : 15% ;
+    left : 0px ;
+    top : 45% ;
+    background : #FFFFFF;
+    box-shadow : 0px 4px 4px #FF6B00 ;
+}
+/*  Les items de mon menu : ITEM 3 */
+.lesItems .item_3{
+    position : absolute ;font-weight: bold;
+    text-decoration: none; font-family: 'poppins';
+    width : 100% ;
+    height : 15% ;
+    left : 0px ;
+    top : 70% ;
+    background : #FFFFFF;
+    box-shadow : 0px 4px 4px #FF6B00 ;
+    border-radius : 0px ;
+}
+  
+  @media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    position : fixed ;
+    width : 15% ;
+    height : 60% ;
+    top : 20% ;
+    background : #5B7CFD ;
+    border-radius : 0px 30px 30px
+       0px ;
+  }
+  .sidebar .lesItems
+  {
+    margin: 15% 0px;
+  }
+  .sidebar .lesItems .list-group
+  {
+    margin-top: 5%;
+  }
+
+
+  @media (max-width: 991.98px) {
+       .sidebarO{
+        margin-top:10%;
+        position: fixed;
+    }
+  }
+ 
+  
