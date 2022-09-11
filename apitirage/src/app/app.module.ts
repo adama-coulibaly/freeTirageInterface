@@ -9,6 +9,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { PostulantComponent } from './postulant/postulant.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TirageComponent } from './tirage/tirage.component';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { TirageComponent } from './tirage/tirage.component';
     BrowserModule,
     RouterModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { Postulant } from '../postulant';
 import { PostulantService } from '../postulant.service';
 
 @Component({
@@ -9,12 +11,44 @@ import { PostulantService } from '../postulant.service';
 export class PostulantComponent implements OnInit {
 
   tirages : any; 
-  constructor(private service: PostulantService) { }
+  
+  messageErreurs:any;
+  messageSucces:any;
+
+  postulant: Postulant = new Postulant();
+  formulairePostulant!: FormGroup;
+
+
+  constructor(private service: PostulantService,private fb: FormBuilder) { }
+  
 
   ngOnInit(): void {
-    this.service.getTirage().subscribe(data=>{
+    // Recuperer depuis la base de donnés
+    this.service.getPostulants().subscribe(data=>{
       this.tirages =data; 
     });
+    // Insertion des données dans la base
+    this.formulairePostulant = this.fb.group({
+      nom_postulant:['',Validators.required],
+      email_postulant:['',[Validators.required, Validators.email]],
+      numero_postulant:['', [Validators.required,Validators.minLength(8),Validators.maxLength(12)]],
+    })
+  }
+  onSubmit(){
+    if(!this.formulairePostulant){return ;}
+
+    if(this.formulairePostulant.valid){
+      this.service.ajouterPostulant(this.formulairePostulant.value).subscribe((res)=>{
+        console.log(res, 'Donner envoyer avec succes');
+        this.formulairePostulant?.reset();
+        this.messageSucces = res.message;
+      })
+
+    }
+    else{
+      this.messageErreurs = "Tous les fichiers oblicatoires";
+    }
+
   }
 
 }

@@ -1,11 +1,13 @@
-main {
-    position: absolute;
-    margin-left: 25%;
-    margin-top: 10%;
+.container
+{
+    background: #FFFFFF; padding: 15px;
+    border-radius: 15px; align-items: center;
+    color:  #587CFD;;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-.principale {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 25px;
+td{
+    padding-top: 20px;
+}
+.ligne
+{
+    height: 50px; border-left: 2px;
 }
