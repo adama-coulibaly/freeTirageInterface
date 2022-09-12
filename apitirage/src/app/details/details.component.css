@@ -1,0 +1,15 @@
+main {
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 10%;
+}
+
+table {
+    background: #587CFD;
+    border-radius: 15px;
+}
+
+tbody {
+    background: #FFFFFF;
+    border-radius: 15px;
+}

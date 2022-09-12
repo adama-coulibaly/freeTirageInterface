@@ -9,7 +9,11 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { PostulantComponent } from './postulant/postulant.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TirageComponent } from './tirage/tirage.component';
+<<<<<<< HEAD
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+=======
+import { DetailsComponent } from './details/details.component';
+>>>>>>> 68536b399690d9b2efe5cc9ffaa7a48fd86a1393
 
 
 @NgModule({
@@ -18,7 +22,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     MenuComponent,
     AccueilComponent,
     PostulantComponent,
-    TirageComponent
+    TirageComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
