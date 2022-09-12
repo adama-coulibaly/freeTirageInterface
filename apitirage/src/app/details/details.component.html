@@ -1,0 +1,23 @@
+<main>
+    <section>
+        <table class="table container">
+      
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <th>Libelle</th>
+                <th>Date</th>
+            </tr>
+                
+            <tr *ngFor="let uneListe of uneListes$ | async; index as i">
+                <td> {{uneListe.id_liste_postulant}} </td>
+                <td> {{uneListe.libelle}}</td>
+                <td> {{uneListe.date}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    </section>
+    
+</main>
+
