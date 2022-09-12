@@ -20,21 +20,16 @@
                 <table>
                       <tbody>
 
-
-                        <div >
-                            ffffff
-                            <ul *ngFor="let listeTirage  of listeTirages ">
-                                <li>
-                                     <h1>Nom : {{listeTirage.libelle}} </h1>
-                                </li>
-                            </ul>
-                           
-                      </div>
-
-
                           <tr>
                               <td>Choisir une liste</td>
-                              <td> <input class="form-control" name="nom" placeholder="Liste pstulants1"></td>
+                                <td> 
+                                    <select  class="form-control">
+                                        <option *ngFor="let listeTirage  of listeTirages"  class="form-control">
+                                            {{listeTirage.libelle}}
+                                        </option>
+                                    </select>
+
+                              </td>
                           </tr>
                           <tr>
                               <td>Donner un nombre</td>
