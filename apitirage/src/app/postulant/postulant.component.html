@@ -1,5 +1,44 @@
 <main>
-    
+
+  <form  class="" [formGroup]="formulairePostulant" (ngSubmit)="onSubmit()"> 
+      <label>Nom</label><input type="text" formControlName="nom_postulant" class="form-control"
+      [(ngModel)]="postulant.nom_postulant" placeholder="Votre nom ici" name="nom_postulant"
+      >
+      <div *ngIf="formulairePostulant.controls['nom_postulant'].touched && 
+      formulairePostulant.controls['nom_postulant'].invalid">
+
+      <span *ngIf="formulairePostulant.controls['nom_postulant']">
+        veuiller remplir le champs de nom
+      </span>
+
+      </div>
+
+
+
+
+      <label>Emails</label><input type="text" formControlName="email_postulant" class="form-control"
+      [(ngModel)]="postulant.email_postulant" placeholder="Votre mail ici" name="email_postulant"
+      >
+
+      <label>Numero</label><input type="text" formControlName="numero_postulant" class="form-control"
+      [(ngModel)]="postulant.numero_postulant" placeholder="Votre mail ici" name="numero_postulant"
+      >
+
+      <button class="btn btn-primary" type="submit" [disabled]="!formulairePostulant.valid"> Inserer</button>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Zone de Recherce -->
     <div class="lesPostulants row ">
         <div class="col-8">
             <h1>La liste des postulants</h1>
@@ -35,6 +74,15 @@
 
     </table>
   </section>
+
+
+
+
+
+
+
+
+
 </main>
 
 

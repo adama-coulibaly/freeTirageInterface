@@ -12,14 +12,3 @@ table{
 th{
     background: #FF6B00;color: #FFFFFF;
 }
-.lesPostulants{
-    background: #587CFD; margin: 10px;
-    border-radius: 5px; align-items: center;
-    color: #FFFFFF; font-family: "poppins";
-}
-.lesPostulants svg{
-    color: #587CFD;; font-weight: bold;
-}
-.lesPostulants button{
-    background-color: #FFFFFF;
-}
