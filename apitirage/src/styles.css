@@ -3,3 +3,22 @@
 body{
     background-color: #E1E8F2;
 }
+main{
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 10%;
+    font-family: 'poppins';
+}
+/* les entetes avec les zones de recherche */
+.lesPostulants{
+    background: #587CFD; margin: 10px;
+    padding: 5px;
+    border-radius: 5px; align-items: center;
+    color: #FFFFFF; font-family: "poppins";
+}
+.lesPostulants svg{
+    color: #587CFD; font-weight: bold;
+}
+.lesPostulants button{
+    background-color: #FFFFFF;
+}

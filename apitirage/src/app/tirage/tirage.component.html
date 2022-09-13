@@ -1,34 +1,82 @@
 <main>
-    <div class="import">
-        <h2>Imoprter une nouvelle liste ici</h2>
-        <input type="text" id="nom" placeholder="Libellé">
-    </div>
-
-    <div class="principale">
-        <div>
-            <h1>Faire un tirage</h1>
-            <div class="search">
-                <input type="search" id="site-search" name="search" placeholder="Rechercher...">
-            </div>
+    <div class="lesPostulants row ">
+        <div class="col-8">
+            <h1>Faite vos tirages</h1>
         </div>
-        <form>
-            <div class="choix">
-                <label for="choix">Choisir une liste</label>
-                <select>
-                    <option value="choix liste">Select Liste</option>
-                    <option value="liste1">Liste 1</option>
-                </select>
-            </div>
-            <div class="number">
-                <label for="number">Donner un nombre</label>
-                <input type="number" id="number">
-            </div>
-            <div class="libelle">
-                <label for="name">Libellé du tirage</label>
-                <input type="text" id="name">
-            </div>
+        <div class="col-4" align="center">
+            <img src="assets/tirage2.png" width="30%">
+        </div>
+      
+      </div>
 
-            <input type="submit" value="Trier">
-        </form>
+
+    
+
+
+    <div class="container row">
+
+        <div class="col-8">
+            <form class="theme-form">
+                <table>
+                      <tbody>
+
+                          <tr>
+                              <td>Choisir une liste</td>
+                                <td> 
+                                    <select  class="form-control">
+                                        <option *ngFor="let listeTirage  of listeTirages"  class="form-control">
+                                            {{listeTirage.libelle}}
+                                        </option>
+                                    </select>
+
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>Donner un nombre</td>
+                              <td> <input type="number" class="form-control" name="nombre" min="1" placeholder="10"></td>
+                          </tr>
+                          <tr>
+                                          <td for="name">Libellé du tirage</td>
+                                          <td><input type="text" id="name" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
+                          </tr>
+                          <tr>
+                              <td><input type="submit" value="Trier" class="form-control btn btn-primary"></td>
+                          </tr>
+          
+                      </tbody>
+                </table>
+          </form>
+        </div>
+
+
+        
+       
+        <div class="col-4">
+            <form>
+                <table>
+                      <tbody>
+                          <tr>
+                            <td>
+                                <input type="file" name="importer" id="importer" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                                <input type="text" name="libelleListe" id="libelleListe" class="form-control" placeholder="Liste apprenants">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                                <input type="submit" name="import" value="Envoyer" class="form-control btn btn-primary">
+                            </td>
+                          </tr>
+                      </tbody>
+                </table>
+          </form>
+        </div>
+
     </div>
+
+
+
 </main>

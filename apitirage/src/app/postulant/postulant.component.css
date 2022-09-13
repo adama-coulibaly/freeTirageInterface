@@ -1,13 +1,14 @@
-main{
-    position: absolute;
-    margin-left: 30%;
-    margin-top: 10%;
+
+section{
+
+     background: #587CFD; 
+     padding: 10px;
+     border-radius: 15px;  width: 100%;
 }
 table{
-    background: #587CFD;
-    border-radius: 15px;
+    background : #FFFFFF ; padding: 10px 1Opx;
+    border-radius: 15px; 
 }
-tbody{
-background : #FFFFFF ;
-border-radius : 15px ;
+th{
+    background: #FF6B00;color: #FFFFFF;
 }

@@ -1,7 +1,58 @@
 <main>
+
+    <form class="" [formGroup]="formulairePostulant" (ngSubmit)="onSubmit()">
+        <label>Nom</label><input type="text" formControlName="nom_postulant" class="form-control" [(ngModel)]="postulant.nom_postulant" placeholder="Votre nom ici" name="nom_postulant">
+        <div *ngIf="formulairePostulant.controls['nom_postulant'].touched && 
+      formulairePostulant.controls['nom_postulant'].invalid">
+
+            <span *ngIf="formulairePostulant.controls['nom_postulant']">
+        veuiller remplir le champs de nom
+      </span>
+
+        </div>
+
+        <label>Emails</label><input type="text" formControlName="email_postulant" class="form-control" [(ngModel)]="postulant.email_postulant" placeholder="Votre mail ici" name="email_postulant">
+
+        <label>Numero</label><input type="text" formControlName="numero_postulant" class="form-control" [(ngModel)]="postulant.numero_postulant" placeholder="Votre mail ici" name="numero_postulant">
+
+        <button class="btn btn-primary" type="submit" [disabled]="!formulairePostulant.valid"> Inserer</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Zone de Recherce -->
+    <div class="lesPostulants row ">
+        <div class="col-8">
+            <h1>La liste des postulants</h1>
+        </div>
+        <div class="col-3">
+            <input type="search" id="form1" class="form-control" placeholder="Recherce..." />
+        </div>
+
+        <div class="col-1">
+            <button type="button" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+            </button>
+        </div>
+
+    </div>
+
     <section>
-        <table>
-            <thead>La liste des Postulants dans la base</thead>
+
+
+        <table class="table container">
+
             <tbody>
                 <th>N°</th>
                 <th>Nom</th>
@@ -18,6 +69,9 @@
             </tbody>
 
         </table>
-
     </section>
+
+
+
+
 </main>
