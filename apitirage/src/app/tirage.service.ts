@@ -42,6 +42,12 @@ getNombreTirage() : Observable<object>{
 
 }
 
+addliste(libelle:string,file:any):Observable<void>{
+  let data=new FormData();
+  data.append("file",file)
+  return this.http.post<void>(`http://localhost:8080/postulant/upload/${libelle}`,data);
+}
+
 
 
 }
