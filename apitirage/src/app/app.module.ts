@@ -8,10 +8,13 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { PostulantComponent } from './postulant/postulant.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TirageComponent } from './tirage/tirage.component';
+q
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+
 import { ListeTirageComponent } from './liste-tirage/liste-tirage.component';
 import { DetailsComponent } from './details/details.component';
 import { TirageDetailsComponent } from './tirage-details/tirage-details.component';
+
 
 
 @NgModule({
@@ -20,9 +23,11 @@ import { TirageDetailsComponent } from './tirage-details/tirage-details.componen
     AccueilComponent,
     PostulantComponent,
     TirageComponent,
+
     ListeTirageComponent,
     DetailsComponent,
     TirageDetailsComponent
+
   ],
   imports: [
     BrowserModule,
