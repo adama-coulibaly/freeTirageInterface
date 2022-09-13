@@ -11,20 +11,26 @@
   
   </div>
 
-    <div class="row  mes_blocks">
-        <div class="block1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor"
-                class="bi bi-house-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                <path fill-rule="evenodd"
-                    d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-            </svg>
+    <div class="row  mes_blocks ">
+        <div class="block1 col-4 bl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+              </svg>
+            <h1>{{nombreListe}}</h1>
+            <h3>Liste totale</h3>
+        </div>
+
+        <div class="block2 col-4 bl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+              </svg>
             <h1>127</h1>
             <h3>Liste Tirées</h3>
         </div>
      
-        <div class="block3">
+        <div class="block3 col-4 bl">
             <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor"
                 class="bi bi-house-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -32,8 +38,8 @@
                 <path fill-rule="evenodd"
                     d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
             </svg>
-            <h1>102</h1>
-            <h3>Tirage faite</h3>
+            <h1>{{nombreTirages}}</h1>
+            <h3>Tirages faites</h3>
         </div>
     </div>
 <!-- la zone de recherche -->
@@ -61,61 +67,24 @@
 <div class="section-listeT">        
 <div class=" container laListe row">
 
-<div class="card text-white bg-primary col-4" style="width: 12rem;">
+<div class="card text-white bg-primary col-4" style="width: 12rem;" *ngFor="let listeTirage of listeTirages">
   <div class="libelle">Libellés</div>
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <h5 class="card-title">Nombre de tirage <button class="btn">5</button></h5>
+    <p class="card-text">{{listeTirage.libelle}}</p>
+    <h5 class="card-title">Nombre de tirage <button class="btn">{{listeTirage.idliste}}</button></h5>
     <div align="center">
-
-        
-    <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor" class="bi bi-eye-fill " viewBox="0 0 16 16">
+<!--href="details={{listeTirage.id_liste_postulant}}"-->
+   <svg [routerLink]="['/details',listeTirage.idliste]" mlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor" class="bi bi-eye-fill " viewBox="0 0 16 16">
         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
         <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
     </svg>
 
+
+
    </div>
 </div>
 </div>
-
-<div class="card text-white bg-primary col-4" style="width: 12rem;">
-    <div class="libelle">Libellés</div>
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <h5 class="card-title">Nombre de tirage <button class="btn">5</button></h5>
-      <div align="center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-      </svg>
-     </div>
-  </div>
-  </div>
-  <div class="card text-white bg-primary col-4" style="width: 12rem;">
-    <div class="libelle">Libellés</div>
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <h5 class="card-title">Nombre de tirage <button class="btn">5</button></h5>
-      <div align="center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-      </svg>
-     </div>
-  </div>
-  </div>
-        <div class="navigations">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-              </nav>
-        </div>   
-</div>
+</div> 
      
 </div>
    

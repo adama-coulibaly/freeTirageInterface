@@ -4,26 +4,30 @@ import { Routes,RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { PostulantComponent } from './postulant/postulant.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TirageComponent } from './tirage/tirage.component';
-<<<<<<< HEAD
+q
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-=======
+
+import { ListeTirageComponent } from './liste-tirage/liste-tirage.component';
 import { DetailsComponent } from './details/details.component';
->>>>>>> 68536b399690d9b2efe5cc9ffaa7a48fd86a1393
+import { TirageDetailsComponent } from './tirage-details/tirage-details.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     AccueilComponent,
     PostulantComponent,
     TirageComponent,
-    DetailsComponent
+
+    ListeTirageComponent,
+    DetailsComponent,
+    TirageDetailsComponent
+
   ],
   imports: [
     BrowserModule,

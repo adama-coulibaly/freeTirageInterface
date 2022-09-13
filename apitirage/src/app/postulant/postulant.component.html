@@ -19,10 +19,32 @@
       <label>Emails</label><input type="text" formControlName="email_postulant" class="form-control"
       [(ngModel)]="postulant.email_postulant" placeholder="Votre mail ici" name="email_postulant"
       >
+      <div *ngIf="formulairePostulant.controls['email_postulant'].touched && 
+      formulairePostulant.controls['email_postulant'].invalid">
+
+      <span *ngIf="formulairePostulant.controls['email_postulant']">
+        veuiller remplir le champs de email
+      </span>
+      <span *ngIf="formulairePostulant.controls['email_postulant']">
+        veuiller remplir le champs de email
+      </span>
+
+      </div>
+
+
+
 
       <label>Numero</label><input type="text" formControlName="numero_postulant" class="form-control"
       [(ngModel)]="postulant.numero_postulant" placeholder="Votre mail ici" name="numero_postulant"
       >
+      <div *ngIf="formulairePostulant.controls['numero_postulant'].touched && 
+      formulairePostulant.controls['numero_postulant'].invalid">
+
+      <span *ngIf="formulairePostulant.controls['numero_postulant']">
+       Donner un nombre pour le tirage
+      </span>
+
+      </div>
 
       <button class="btn btn-primary" type="submit" [disabled]="!formulairePostulant.valid"> Inserer</button>
 
