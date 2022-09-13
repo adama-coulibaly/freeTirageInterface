@@ -10,6 +10,7 @@ export class PostulantService {
   constructor(private http: HttpClient) { }
   urlApi = "http://localhost:8080/postulant/read";
  AjouterPostulants = "http://localhost:8080/postulant/add";
+ importerF = "http://localhost:8080/postulant/upload/liste6";
 
 getPostulants():Observable<object>
 {
@@ -21,8 +22,7 @@ ajouterPostulant(data:any):Observable<any>{
 
 
 importerPostulants(data:any):Observable<any>{
-  return this.http.post(`${this.AjouterPostulants}`,data);
-  
+  return this.http.post(`${this.importerF}`,data);
 }
 
 

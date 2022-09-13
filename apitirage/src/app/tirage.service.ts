@@ -2,6 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+// export interface LitePostulant{
+//   idliste: number;
+//   libelle: string;
+//   date: string;
+// }
+export interface Tirage{
+  id_tirage: number;
+  date_tirage: string;
+  libelle_tirage: string;
+  nbre_postulant_tirer:string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +30,12 @@ getListeTirage():Observable<object>
   return this.http.get(this.urlApi);
 }
 
-getUneListe() : Observable<object>{
+getUneListe(listeID: number) : Observable<Tirage[]>{
 
-  return this.http.get<object>("http://localhost:8080/listepostulant/uneListe/2");
+  return this.http.get<Tirage[]>("http://localhost:8080/tirage/listeParTirage/"+`${listeID}`);
 
 }
+
 getNombreTirage() : Observable<object>{
 
   return this.http.get(this.nbreTirage);

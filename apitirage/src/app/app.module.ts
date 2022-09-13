@@ -11,6 +11,7 @@ import { TirageComponent } from './tirage/tirage.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ListeTirageComponent } from './liste-tirage/liste-tirage.component';
 import { DetailsComponent } from './details/details.component';
+import { TirageDetailsComponent } from './tirage-details/tirage-details.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DetailsComponent } from './details/details.component';
     PostulantComponent,
     TirageComponent,
     ListeTirageComponent,
-    DetailsComponent
+    DetailsComponent,
+    TirageDetailsComponent
   ],
   imports: [
     BrowserModule,

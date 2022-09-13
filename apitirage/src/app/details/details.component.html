@@ -5,14 +5,19 @@
         <tbody>
             <tr>
                 <th>N°</th>
-                <th>Libelle</th>
-                <th>Date</th>
+                <th>Libelle tirage</th>
+                <th>Date tirages</th>
+                <th>Personnes triées</th>
             </tr>
-                
-            <tr *ngFor="let uneListe of uneListes$ | async; index as i">
-                <td> {{uneListe.id_liste_postulant}} </td>
-                <td> {{uneListe.libelle}}</td>
-                <td> {{uneListe.date}}</td>
+
+            <tr *ngFor="let liste of uneListes ; index as i">
+                <td></td>
+                <td> {{liste.id_tirage}}</td>
+                <td> 
+                   <a href="#" [routerLink]="['/deatilsTirages',liste.id_tirage]">{{liste.libelle_tirage}}</a> 
+                </td>
+                <td> {{liste.date_tirage}}</td>
+                <td> {{liste.nbre_postulant_tirer}}</td>
             </tr>
         </tbody>
 
@@ -20,4 +25,3 @@
     </section>
     
 </main>
-

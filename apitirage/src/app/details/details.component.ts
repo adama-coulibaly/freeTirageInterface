@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TirageService } from '../tirage.service';
+import { ActivatedRoute } from '@angular/router';
 
-
-export class Details {
-  id_liste_postulant :number|undefined;
-  date: Date|undefined;
-  libelle: string|undefined;
+export interface LitePostulant{
+  idliste: number;
+  libelle: string;
+  date: string;
+}
+export interface Tirage{
+  id_tirage: number;
+  date_tirage: string;
+  libelle_tirage: string;
+  nbre_postulant_tirer:string;
 }
 
 @Component({
@@ -18,20 +24,16 @@ export class DetailsComponent implements OnInit {
 
    //uneListe: any;
 
-   uneListes$!: Observable<any>;
+   uneListes!: Tirage[];
 
   // uneListe: Array<any> = [];
-  constructor(private maListe: TirageService) { }
+  constructor(private maListe : TirageService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    /*
-    this.maListe.getUneListe().subscribe(data=>{
-
-      console.log(data);
-      this.uneListe=data;
-      })
-      */
-     this.uneListes$ =  this.maListe.getUneListe();
+    const listeID = +this.route.snapshot.params["idliste"];
+        this.maListe.getUneListe(listeID).subscribe(data =>{
+        this.uneListes = data
+     });
     
   }
 
