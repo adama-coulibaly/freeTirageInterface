@@ -27,14 +27,16 @@ export class DetailsComponent implements OnInit {
    //uneListe: any;
 
    uneListes!: Tirage[];
-
+   tirageSurList:any;
   // uneListe: Array<any> = [];
   constructor(private maListe : TirageService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     const listeID = +this.route.snapshot.params["idliste"];
         this.maListe.getUneListe(listeID).subscribe(data =>{
-        this.uneListes = data
+        this.uneListes = data;
+        this.tirageSurList = this.uneListes.length;
+        console.log("NombreListe "+this.tirageSurList);
      });
     
 

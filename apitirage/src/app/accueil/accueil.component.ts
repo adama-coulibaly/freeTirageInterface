@@ -11,6 +11,7 @@ export class AccueilComponent implements OnInit {
   listeTirages : any;
   nombreTirages:any;
   nombreListe:any;
+  listeTirer:any;
   
   constructor(private serviceTirage: TirageService) { }
 
@@ -18,9 +19,12 @@ export class AccueilComponent implements OnInit {
     this.serviceTirage.getListeTirage().subscribe(data=>{
 
       // AVOIR LA LISTE TOTALE DES POSTULANTS
-     
+     this.serviceTirage.getListeTirer().subscribe(data=>{
+      this.listeTirer=data;
+     })
 
       this.listeTirages=data;
+      console.log(data);
       this.nombreListe= this.listeTirages.length;
     }),
     this.serviceTirage.getNombreTirage().subscribe(data=>{

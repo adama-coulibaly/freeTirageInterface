@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TirageService } from '../tirage.service';
 import { FormGroup,Validators,NgForm, FormBuilder } from '@angular/forms';
-import { Tirage } from '../tirage';
+import { Tirages } from '../tirage';
 import { PostulantService } from '../postulant.service';
 import { Importer } from '../importer';
 import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tirage',
@@ -14,14 +15,24 @@ import { HttpClient } from '@angular/common/http';
 export class TirageComponent implements OnInit {
 
   listeTirages : any;
-  formulaireTirage!:FormGroup;
+  
 
   // Les attributs pour le formulaire d'importation
   formulairesImp!:FormGroup;
+  // Les attributs pour le formulaire de tirage
+
+adama:any;
+  tirages:any;
+  select_liste!:any;
+  libelle_tirage!:string;
+  nbre_postulant_tirer!:bigint;
+
+nombre:any;
   file!:any;
   importer!:Importer
-  
-  public tirage: Tirage = new Tirage();
+
+  tirage: Tirages = new Tirages();
+ 
  
 
   
@@ -31,6 +42,7 @@ export class TirageComponent implements OnInit {
 // La methode initialiser
 
   ngOnInit(): void {
+    
     // Recuperer la liste des tirages
     this.serviceTirage.getListeTirage().subscribe(data=>{
       this.listeTirages=data;
@@ -44,21 +56,34 @@ export class TirageComponent implements OnInit {
     })
 
   }
+  // changer le type de fichier importer en file
   fileChange(e:any){
     this.file=e.target["files"][0];
   }
 
-  // Formulaire d'insertion
-
+  // Formulaire d'importation d'un fichier
   enregistreDonner(){
  
         this.importer=this.formulairesImp.value
         this.serviceTirage.addliste(this.importer.libelle,this.file).subscribe(
           data=>{
-            console.log("Les données "+data);
             this.formulairesImp.reset()
           }
         )
+  }
+
+
+  faireTirage(){
+console.log("Ma liste "+this.select_liste);
+// this.serviceTirage.faireTirages(this.tirages,this.select_liste,this.nbre_postulant_tirer).subscribe(
+this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
+data=>{
+        this.adama=data;
+        console.log("Mes tirages faites = "+this.adama);
+      }
+    )
+    // console.log("Faite un tirage console "+this.nombre+" "+this.select_liste.valueOf+" ");
+    console.log("Faite un tirage "+this.libelle_tirage+" "+this.nbre_postulant_tirer+" "+this.select_liste);
   }
    
 
