@@ -13,28 +13,30 @@
       <div class="container row">
 
         <div class="col-8">
-            <form class="theme-form" >
+            <form  (ngSubmit)="faireTirage()" #FormulaireTirage="ngForm">
                 <table>
                       <tbody>
 
                           <tr>
                               <td>Choisir une liste</td>
                                 <td> 
-                                    <select  class="form-control">
-                                        <option *ngFor="let listeTirage  of listeTirages"  class="form-control" value="{{listeTirage.libelle}}">
+                                    <select   [(ngModel)]="select_liste" name="libelleliste" class="form-control">
+                                        <option *ngFor="let listeTirage  of listeTirages"  class="form-control" [ngValue]="listeTirage.libelle">
                                             {{listeTirage.libelle}}
                                         </option>
                                     </select>
+
+                                    <!-- <input type="text" class="form-control"  [(ngModel)]="select_liste" name="select_liste"  placeholder="Liste a choisir"> -->
 
                               </td>
                           </tr>
                           <tr>
                               <td>Donner un nombre</td>
-                              <td> <input type="number" class="form-control" name="nombre" min="1" placeholder="10"></td>
+                              <td> <input type="number" class="form-control"  [(ngModel)]="nbre_postulant_tirer" name="nbre_postulant_tirer" min="1" placeholder="10"></td>
                           </tr>
                           <tr>
-                                          <td for="name">Libellé du tirage</td>
-                                          <td><input type="text" id="name" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
+                                          <td for="libelle_tirage">Libellé du tirage</td>
+                                          <td><input type="text" id="libelle_tirage"  [(ngModel)]="libelle_tirage" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
                           </tr>
                           <tr>
                               <td><input type="submit" value="Trier" class="form-control btn btn-primary"></td>
