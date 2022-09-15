@@ -23,14 +23,12 @@ main{
     background-color: #FFFFFF;
 }
 /* Pour les tableaux  */
-section{
-    padding: 10px;
-    border-radius: 15px; 
+
+
+.detailsEntete{
+    background-color: #587CFD;
+    width: 150%; margin: 10px;
+    padding: 10px;align-items: center;
+    font-weight: bold;
 }
-table{
-   background : #FFFFFF ; padding: 10px 1Opx;
-   border-radius: 15px;width: 130%; 
-}
-th{
-   background: #FF6B00;color: #FFFFFF;
-}
+

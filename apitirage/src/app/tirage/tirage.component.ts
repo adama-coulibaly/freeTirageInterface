@@ -76,6 +76,14 @@ nombre:any;
         )
   }
 
+    viderChampsTirage(){
+        v_select:  " ";
+        v_Tirage: " ";
+        v_nbre: " ";
+
+        
+
+    }
 
   faireTirage(){
 console.log("Ma liste "+this.select_liste);
@@ -83,6 +91,7 @@ console.log("Ma liste "+this.select_liste);
 this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
 data=>{
         this.adama=data;
+        this.viderChampsTirage();
         console.log("Mes tirages faites = "+this.adama);
       }
     )
