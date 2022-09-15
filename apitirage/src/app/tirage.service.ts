@@ -36,7 +36,7 @@ getListeTirage():Observable<object>
   return this.http.get(this.urlApi);
 }
 // Prendre les tirages faites sur une liste
-getUneListe(listeID: number) : Observable<Tirage[]>{
+getUnTirage(listeID: number) : Observable<Tirage[]>{
 
   return this.http.get<Tirage[]>("http://localhost:8080/tirage/listeParTirage/"+`${listeID}`);
 
@@ -71,6 +71,18 @@ faireTirages(tirage1:Tirages,libelleTirage:string,nbrePt:BigInt):Observable<obje
   // this.tirages.libelle_tirage=libelle_tirage;
   return this.http.post(`http://localhost:8080/tirage/faireTirage/${libelleTirage}/${nbrePt}`,tirage1);
 }
+// Recuperer une liste
+recupererListe(idliste:number):Observable<object>{
+  return this.http.get(`http://localhost:8080/listepostulant/listeRecuperer/${idliste}`)
+}
+
+// Recupere un tirages 
+recupererTirages(id_tirage:number):Observable<object>{
+  return this.http.get(`http://localhost:8080/tirage/recuperer/${id_tirage}`)
+}
+
+
+
 
 
 

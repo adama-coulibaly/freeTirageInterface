@@ -1,14 +1,25 @@
 
 section{
-
-     background: #587CFD; 
      padding: 10px;
-     border-radius: 15px;  width: 100%;
+     border-radius: 15px; 
 }
 table{
     background : #FFFFFF ; padding: 10px 1Opx;
-    border-radius: 15px; 
+    border-radius: 15px; width: 130%;
 }
 th{
     background: #FF6B00;color: #FFFFFF;
+}
+
+.lesPostulants{
+    background: #587CFD; margin: 10px;
+    padding: 5px;
+    border-radius: 5px; align-items: center;
+    color: #FFFFFF; font-family: "poppins";
+}
+.lesPostulants svg{
+    color: #587CFD; font-weight: bold;
+}
+.lesPostulants button{
+    background-color: #FFFFFF;
 }

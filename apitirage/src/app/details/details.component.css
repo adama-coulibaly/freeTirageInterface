@@ -1,13 +1,11 @@
 
 section{
-
-    background: #587CFD; 
     padding: 10px;
-    border-radius: 15px;  width: 100%;
+    border-radius: 15px; 
 }
 table{
    background : #FFFFFF ; padding: 10px 1Opx;
-   border-radius: 15px; 
+   border-radius: 15px;  width: 130%;
 }
 th{
    background: #FF6B00;color: #FFFFFF;
