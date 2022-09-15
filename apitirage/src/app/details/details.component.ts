@@ -24,7 +24,12 @@ export interface Tirage{
 })
 export class DetailsComponent implements OnInit {
 
-   //uneListe: any;
+
+   donner:any;
+   libelle_liste:any;
+   date_liste: any;
+
+
 
    uneListes!: Tirage[];
    tirageSurList:any;
@@ -35,9 +40,20 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const listeID = +this.route.snapshot.params["idliste"];
-        this.maListe.getUneListe(listeID).subscribe(data =>{
+        this.maListe.getUnTirage(listeID).subscribe(data =>{
         this.uneListes = data;
         this.tirageSurList = this.uneListes.length;
+
+          this.maListe.recupererListe(listeID).subscribe(data=>{
+          this.donner = data;
+          this.libelle_liste = this.donner[0].libelle;
+          this.date_liste = this.donner[0].date;
+          
+          // console.log("L'ensemle de mes listes = "+this.donner[0].libelle);
+
+          // console.log("L'ensemle de mes listes2 = "+this.donner[0].date);
+          })
+
         console.log("NombreListe "+this.tirageSurList);
      });
     

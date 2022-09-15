@@ -10,6 +10,10 @@ import { TirageComponent } from '../tirage/tirage.component';
 })
 export class TirageDetailsComponent implements OnInit {
   unePersonnes:any=[]
+
+  unTirage:any=[];
+  libelleTirage!:any;
+  dateLibelle!:any;
   page:any
 
   constructor(private serviceTirage:TirageService, private route: ActivatedRoute) { }
@@ -21,6 +25,17 @@ export class TirageDetailsComponent implements OnInit {
     this.serviceTirage.personnesTirer(id_tirage).subscribe(data=>{
       this.unePersonnes = data;
       console.log("Je suis une personne :"+this.unePersonnes);
+
+//Recuperer un tirage 
+
+      this.serviceTirage.recupererTirages(id_tirage).subscribe(data=>{
+        this.unTirage = data;
+        this.libelleTirage = this.unTirage.libelle_tirage
+        this.dateLibelle  = this.unTirage.date_tirage;
+
+        console.log("je suis le tirage "+this.unTirage.date_tirage)
+      })
+
     })
   }
 

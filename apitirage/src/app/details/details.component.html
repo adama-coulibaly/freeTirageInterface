@@ -1,5 +1,14 @@
 <main>
 
+    <div class="detailsEntete" class="row" align="center">
+
+       <div class="col-6"> {{libelle_liste}} </div>
+
+        <div class="col-6"> {{date_liste|date}} </div>
+
+    </div>
+
+
 
     <section>
 
@@ -19,7 +28,7 @@
                 <td> 
                    <a href="#" [routerLink]="['/deatilsTirages',liste.id_tirage]">{{liste.libelle_tirage}}</a> 
                 </td>
-                <td> {{liste.date_tirage}}</td>
+                <td> {{liste.date_tirage|date}}</td>
                 <td> {{liste.nbre_postulant_tirer}}</td>
                 
             </tr>

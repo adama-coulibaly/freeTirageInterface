@@ -1,0 +1,12 @@
+
+section{
+    padding: 10px;
+    border-radius: 15px;  
+}
+table{
+   background : #FFFFFF ; padding: 10px 1Opx;
+   border-radius: 15px; width: 130%;
+}
+th{
+   background: #FF6B00;color: #FFFFFF;
+}
