@@ -1,7 +1,6 @@
-main {
-    position: absolute;
-    margin-left: 30%;
-    margin-top: 10%;
+section {
+    padding1: 10px;
+    border-image-repeat: 15px;
 }
 
 table {
@@ -9,7 +8,9 @@ table {
     border-radius: 15px;
 }
 
-tbody {
+table {
     background: #FFFFFF;
+    padding: 10px 10px;
     border-radius: 15px;
+    width: 130%;
 }

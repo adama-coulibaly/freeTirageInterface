@@ -8,36 +8,35 @@
         </div>
       
       </div>
-
-
     
-
-
-    <div class="container row">
+      
+      <div class="container row">
 
         <div class="col-8">
-            <form class="theme-form">
+            <form  (ngSubmit)="faireTirage()" #FormulaireTirage="ngForm">
                 <table>
                       <tbody>
 
                           <tr>
                               <td>Choisir une liste</td>
                                 <td> 
-                                    <select  class="form-control">
-                                        <option *ngFor="let listeTirage  of listeTirages"  class="form-control">
+                                    <select   [(ngModel)]="select_liste" name="libelleliste" class="form-control">
+                                        <option *ngFor="let listeTirage  of listeTirages"  class="form-control" [ngValue]="listeTirage.libelle">
                                             {{listeTirage.libelle}}
                                         </option>
                                     </select>
+
+                                    <!-- <input type="text" class="form-control"  [(ngModel)]="select_liste" name="select_liste"  placeholder="Liste a choisir"> -->
 
                               </td>
                           </tr>
                           <tr>
                               <td>Donner un nombre</td>
-                              <td> <input type="number" class="form-control" name="nombre" min="1" placeholder="10"></td>
+                              <td> <input type="number" class="form-control"  [(ngModel)]="nbre_postulant_tirer" name="nbre_postulant_tirer" min="1" placeholder="10"></td>
                           </tr>
                           <tr>
-                                          <td for="name">Libellé du tirage</td>
-                                          <td><input type="text" id="name" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
+                                          <td for="libelle_tirage">Libellé du tirage</td>
+                                          <td><input type="text" id="libelle_tirage"  [(ngModel)]="tirage.libelle_tirage" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
                           </tr>
                           <tr>
                               <td><input type="submit" value="Trier" class="form-control btn btn-primary"></td>
@@ -48,23 +47,30 @@
           </form>
         </div>
 
-
+<!-- Importer un fichier csv ici -->
         
        
         <div class="col-4">
-            <form>
+            <form [formGroup]="formulairesImp" (ngSubmit)="enregistreDonner()">
                 <table>
                       <tbody>
                           <tr>
                             <td>
-                                <input type="file" name="importer" id="importer" class="form-control">
+                                <input type="file" name="file" class="form-control"  formControlName="file" (change)="fileChange($event)">
                             </td>
                           </tr>
                           <tr>
                             <td>
-                                <input type="text" name="libelleListe" id="libelleListe" class="form-control" placeholder="Liste apprenants">
+                                <input type="text" name="libelle" formControlName="libelle" class="form-control" placeholder="Libellés" [(ngModel)]="tirage.libelleListe" >
                             </td>
+                           
                           </tr>
+                          <tr>
+                          <td>
+                            <input type="text" name="date" class="form-control"  formControlName="date" name="date" hidden>
+                        </td>
+                        </tr>
+
                           <tr>
                             <td>
                                 <input type="submit" name="import" value="Envoyer" class="form-control btn btn-primary">
