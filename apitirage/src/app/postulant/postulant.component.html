@@ -88,31 +88,24 @@
         </table>
     </section>
 
-    </div>
 
-    <section>
+    <table class="table container">
 
-        <table class="table container">
+        <tbody>
+            <th>N°</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Numéro</th>
+            <tr *ngFor="let tirage of tirages">
+                <td> {{tirage.id_postulant}} </td>
+                <td> {{tirage.nom_postulant}}</td>
+                <td> {{tirage.prenom_postulant}}</td>
+                <td> {{tirage.email_postulant}}</td>
+                <td> {{tirage.numero_postulant}}</td>
+            </tr>
+        </tbody>
 
-            <tbody>
-                <th>N°</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Email</th>
-                <th>Numéro</th>
-                <tr *ngFor="let tirage of tirages">
-                    <td> {{tirage.id_postulant}} </td>
-                    <td> {{tirage.nom_postulant}}</td>
-                    <td> {{tirage.prenom_postulant}}</td>
-                    <td> {{tirage.email_postulant}}</td>
-                    <td> {{tirage.numero_postulant}}</td>
-                </tr>
-            </tbody>
-
-        </table>
-    </section>
-
-</main>
-
+    </table>
 
 </main>
