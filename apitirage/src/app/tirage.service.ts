@@ -35,12 +35,18 @@ getListeTirage():Observable<object>
 {
   return this.http.get(this.urlApi);
 }
-
+// Prendre les tirages faites sur une liste
 getUneListe(listeID: number) : Observable<Tirage[]>{
 
   return this.http.get<Tirage[]>("http://localhost:8080/tirage/listeParTirage/"+`${listeID}`);
 
 }
+// Affiche les personnes tirées pour un tirage données
+// 
+personnesTirer(tirages_id_tirage:number): Observable<Tirage[]>{
+  return this.http.get<Tirage[]>("http://localhost:8080/tirage/personnes/"+`${tirages_id_tirage}`)
+}
+
 
 getNombreTirage() : Observable<object>{
 

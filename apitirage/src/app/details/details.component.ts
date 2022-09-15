@@ -28,6 +28,8 @@ export class DetailsComponent implements OnInit {
 
    uneListes!: Tirage[];
    tirageSurList:any;
+
+   page:number=1;
   // uneListe: Array<any> = [];
   constructor(private maListe : TirageService,private route:ActivatedRoute) { }
 

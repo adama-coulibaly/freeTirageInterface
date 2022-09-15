@@ -6,6 +6,7 @@ import { PostulantService } from '../postulant.service';
 import { Importer } from '../importer';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tirage',
@@ -21,28 +22,31 @@ export class TirageComponent implements OnInit {
   formulairesImp!:FormGroup;
   // Les attributs pour le formulaire de tirage
 
-adama:any;
+  adama:any;
   tirages:any;
   select_liste!:any;
   libelle_tirage!:string;
   nbre_postulant_tirer!:bigint;
+
+  unePersonnes!:any
 
 nombre:any;
   file!:any;
   importer!:Importer
 
   tirage: Tirages = new Tirages();
- 
- 
 
   
   constructor(private serviceTirage: TirageService,
-                private postulantService: PostulantService,private formB:FormBuilder,private  http:HttpClient) { }
+                private postulantService: PostulantService,private formB:FormBuilder,private route:ActivatedRoute,private  http:HttpClient) { }
 
 // La methode initialiser
 
   ngOnInit(): void {
+
     
+
+
     // Recuperer la liste des tirages
     this.serviceTirage.getListeTirage().subscribe(data=>{
       this.listeTirages=data;
@@ -82,9 +86,7 @@ data=>{
         console.log("Mes tirages faites = "+this.adama);
       }
     )
-    // console.log("Faite un tirage console "+this.nombre+" "+this.select_liste.valueOf+" ");
-    console.log("Faite un tirage "+this.libelle_tirage+" "+this.nbre_postulant_tirer+" "+this.select_liste);
-  }
+     }
    
 
 
