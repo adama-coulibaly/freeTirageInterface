@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TirageService } from '../tirage.service';
+import { TirageComponent } from '../tirage/tirage.component';
 
 @Component({
   selector: 'app-tirage-details',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tirage-details.component.css']
 })
 export class TirageDetailsComponent implements OnInit {
+  unePersonnes:any=[]
+  page:any
 
-  constructor() { }
+  constructor(private serviceTirage:TirageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    // Permet faire le routage avec notre tirage pour recuperer les postulants tirers
+    const id_tirage = +this.route.snapshot.params["tirages_id_tirage"];
+    this.serviceTirage.personnesTirer(id_tirage).subscribe(data=>{
+      this.unePersonnes = data;
+      console.log("Je suis une personne :"+this.unePersonnes);
+    })
   }
 
 }

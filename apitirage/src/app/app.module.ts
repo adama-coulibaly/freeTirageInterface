@@ -12,7 +12,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ListeTirageComponent } from './liste-tirage/liste-tirage.component';
 import { DetailsComponent } from './details/details.component';
 import { TirageDetailsComponent } from './tirage-details/tirage-details.component';
-
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,15 @@ import { TirageDetailsComponent } from './tirage-details/tirage-details.componen
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule, // Pour faire  la recherche
     RouterModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    
+     
   ],
   providers: [],
   bootstrap: [AppComponent]

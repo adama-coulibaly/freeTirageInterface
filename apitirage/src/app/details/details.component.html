@@ -1,5 +1,8 @@
 <main>
+
+
     <section>
+        <!-- <h1>Adama {{uneListes.id_liste}}</h1> -->
         <table class="table container">
       
         <tbody>
@@ -10,18 +13,21 @@
                 <th>Personnes triées</th>
             </tr>
 
-            <tr *ngFor="let liste of uneListes ; index as i">
-                <td></td>
-                <td> {{liste.id_tirage}}</td>
+            <tr *ngFor="let liste of uneListes | paginate:{itemsPerPage: 10, currentPage:page}; let i =index">
+               
+                <td>{{i+1}}</td>
                 <td> 
                    <a href="#" [routerLink]="['/deatilsTirages',liste.id_tirage]">{{liste.libelle_tirage}}</a> 
                 </td>
                 <td> {{liste.date_tirage}}</td>
                 <td> {{liste.nbre_postulant_tirer}}</td>
+                
             </tr>
         </tbody>
 
     </table>
+    <pagination-controls (pageChange)="page=$event"></pagination-controls>
     </section>
     
+
 </main>

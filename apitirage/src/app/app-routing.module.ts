@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'postulant', component: PostulantComponent},
   {path:'tirage', component: TirageComponent},
   {path:'details/:idliste', component: DetailsComponent},
-  {path:'deatilsTirages/:id_tirage', component: TirageDetailsComponent}
+  {path:'deatilsTirages/:tirages_id_tirage', component: TirageDetailsComponent}
 ];
 
 @NgModule({

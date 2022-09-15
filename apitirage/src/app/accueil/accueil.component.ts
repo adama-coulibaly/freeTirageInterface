@@ -12,7 +12,9 @@ export class AccueilComponent implements OnInit {
   nombreTirages:any;
   nombreListe:any;
   listeTirer:any;
+  recherche!: string;
   
+  page: number = 1;
   constructor(private serviceTirage: TirageService) { }
 
   ngOnInit(): void {
