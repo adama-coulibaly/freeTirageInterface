@@ -11,6 +11,7 @@ import { PostulantService } from '../postulant.service';
 export class PostulantComponent implements OnInit {
 
   tirages : any; 
+  page:number =1;
   
   messageErreurs:any;
   messageSucces:any;
@@ -27,12 +28,6 @@ export class PostulantComponent implements OnInit {
     this.service.getPostulants().subscribe(data=>{
       this.tirages =data; 
     });
-    // Insertion des données dans la base
-    this.formulairePostulant = this.fb.group({
-      nom_postulant:['',Validators.required],
-      email_postulant:['',[Validators.required, Validators.email]],
-      numero_postulant:['', [Validators.required,Validators.minLength(8),Validators.maxLength(12)]],
-    })
   }
   onSubmit(){
     if(!this.formulairePostulant){return ;}

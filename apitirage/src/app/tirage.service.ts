@@ -54,7 +54,7 @@ getNombreTirage() : Observable<object>{
 
 }
 // Faire l'importer du fichier
-addliste(libelle:string,file:any):Observable<void>{
+addliste(libelle:string,file:any):Observable<any>{
   let data = new FormData();
   data.append("file",file)
   return this.http.post<void>(`http://localhost:8080/postulant/upload/${libelle}`,data);

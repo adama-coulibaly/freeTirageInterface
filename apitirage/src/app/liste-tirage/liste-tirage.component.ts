@@ -9,11 +9,15 @@ import { TirageService } from '../tirage.service';
 export class ListeTirageComponent implements OnInit {
 
   listeTirages : any;
+  direBonjours:any;
+  adama:any
+
   constructor(private serviceTirage: TirageService) { }
 
   ngOnInit(): void {
     this.serviceTirage.getListeTirage().subscribe(data=>{
       this.listeTirages=data;
+      this.direBonjours = 0;
     })
   }
 

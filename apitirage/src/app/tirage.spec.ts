@@ -1,7 +1,7 @@
-import { Tirage } from './tirage';
+import { Tirages} from './tirage';
 
 describe('Tirage', () => {
   it('should create an instance', () => {
-    expect(new Tirage()).toBeTruthy();
+    expect(new Tirages()).toBeTruthy();
   });
 });

@@ -39,7 +39,7 @@
                                           <td><input type="text" id="libelle_tirage"  [(ngModel)]="tirage.libelle_tirage" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
                           </tr>
                           <tr>
-                              <td><input type="submit" value="Trier" class="form-control btn btn-primary"></td>
+                              <td><input type="submit" value="Trier" class="form-control btn btn-outline-primary"></td>
                           </tr>
           
                       </tbody>
@@ -54,6 +54,15 @@
             <form [formGroup]="formulairesImp" (ngSubmit)="enregistreDonner()">
                 <table>
                       <tbody>
+                        <tr>
+                            <td>les erreurs ici : {{message}}</td>
+                        </tr>
+
+
+
+
+
+
                           <tr>
                             <td>
                                 <input type="file" name="file" class="form-control"  formControlName="file" (change)="fileChange($event)">
@@ -82,6 +91,10 @@
         </div>
 
     </div>
+
+
+   
+
 
 
 

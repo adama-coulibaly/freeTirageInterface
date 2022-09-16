@@ -12,10 +12,18 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-tirage',
   templateUrl: './tirage.component.html',
   styleUrls: ['./tirage.component.css']
+  
+  
 })
 export class TirageComponent implements OnInit {
 
   listeTirages : any;
+  active = true;
+
+
+  mesListe!:[];
+
+
   
 
   // Les attributs pour le formulaire d'importation
@@ -33,6 +41,7 @@ export class TirageComponent implements OnInit {
 nombre:any;
   file!:any;
   importer!:Importer
+  message!: any;
 
   tirage: Tirages = new Tirages();
 
@@ -44,7 +53,7 @@ nombre:any;
 
   ngOnInit(): void {
 
-    
+    mesListe: ["f"];
 
 
     // Recuperer la liste des tirages
@@ -69,21 +78,19 @@ nombre:any;
   enregistreDonner(){
  
         this.importer=this.formulairesImp.value
-        this.serviceTirage.addliste(this.importer.libelle,this.file).subscribe(
+
+       this.serviceTirage.addliste(this.importer.libelle,this.file).subscribe(
           data=>{
-            this.formulairesImp.reset()
+            this.formulairesImp.reset();
+
+            this.message = data
+            console.log("je suis le retour "+data);
           }
-        )
+         
+        ) 
   }
 
-    viderChampsTirage(){
-        v_select:  " ";
-        v_Tirage: " ";
-        v_nbre: " ";
-
-        
-
-    }
+ 
 
   faireTirage(){
 console.log("Ma liste "+this.select_liste);
@@ -91,7 +98,7 @@ console.log("Ma liste "+this.select_liste);
 this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
 data=>{
         this.adama=data;
-        this.viderChampsTirage();
+        
         console.log("Mes tirages faites = "+this.adama);
       }
     )
