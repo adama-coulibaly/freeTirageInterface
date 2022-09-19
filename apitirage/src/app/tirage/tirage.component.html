@@ -13,7 +13,7 @@
       <div class="container row">
 
         <div class="col-8">
-            <form  (ngSubmit)="faireTirage()" #FormulaireTirage="ngForm">
+            <form  (ngSubmit)="faireTirage()" #FormulaireTirage="ngForm" >
                 <table>
                       <tbody>
 
@@ -26,8 +26,6 @@
                                         </option>
                                     </select>
 
-                                    <!-- <input type="text" class="form-control"  [(ngModel)]="select_liste" name="select_liste"  placeholder="Liste a choisir"> -->
-
                               </td>
                           </tr>
                           <tr>
@@ -39,7 +37,7 @@
                                           <td><input type="text" id="libelle_tirage"  [(ngModel)]="tirage.libelle_tirage" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
                           </tr>
                           <tr>
-                              <td><input type="submit" value="Trier" class="form-control btn btn-outline-primary"></td>
+                              <td><input type="submit" value="Trier" class="form-control btn btn-outline-primary" (click)="open(mymodal)"></td>
                           </tr>
           
                       </tbody>
@@ -47,22 +45,15 @@
           </form>
         </div>
 
+   
 <!-- Importer un fichier csv ici -->
         
        
         <div class="col-4">
             <form [formGroup]="formulairesImp" (ngSubmit)="enregistreDonner()">
                 <table>
-                      <tbody>
-                        <tr>
-                            <td>les erreurs ici : {{message}}</td>
-                        </tr>
-
-
-
-
-
-
+                      <tbody >
+                    
                           <tr>
                             <td>
                                 <input type="file" name="file" class="form-control"  formControlName="file" (change)="fileChange($event)">
@@ -93,9 +84,42 @@
     </div>
 
 
-   
 
 
 
+        <ng-template let-modal  #mymodal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Les personnes tirées</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" *ngIf="unePersonnes; else erreur">
+           
+            <table >
+                <thead>
+                    <th>Nom</th><th>Prenom</th> <th>Email</th>  <th>Numéro</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let debuter of unePersonnes ">
+                        <td>{{debuter[1]}}</td>
+                        <td>{{debuter[2]}}</td>
+                        <td>{{debuter[4]}}</td>
+                        <td>{{debuter[0]}}</td> 
+                        <td>{{debuter[3]}}</td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+          </div>
+        </ng-template>
+
+        <ng-template #erreur>
+               <td> Veuilleir bien renseigner les champs</td>
+        </ng-template>
 
 </main>

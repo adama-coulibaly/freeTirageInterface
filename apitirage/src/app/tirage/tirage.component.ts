@@ -7,6 +7,7 @@ import { Importer } from '../importer';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tirage',
@@ -19,6 +20,8 @@ export class TirageComponent implements OnInit {
 
   listeTirages : any;
   active = true;
+  
+  // mymodal:any
 
 
   mesListe!:[];
@@ -30,11 +33,12 @@ export class TirageComponent implements OnInit {
   formulairesImp!:FormGroup;
   // Les attributs pour le formulaire de tirage
 
-  adama:any;
-  tirages:any;
+
   select_liste!:any;
-  libelle_tirage!:string;
-  nbre_postulant_tirer!:bigint;
+
+
+
+  nbre_postulant_tirer!:number;
 
   unePersonnes!:any
 
@@ -43,13 +47,69 @@ nombre:any;
   importer!:Importer
   message!: any;
 
+  tirage_cree!: any;
+
+  postulants!: any;
+
   tirage: Tirages = new Tirages();
 
+  tirageRecuperer!:any;
+ 
+
   
+
   constructor(private serviceTirage: TirageService,
-                private postulantService: PostulantService,private formB:FormBuilder,private route:ActivatedRoute,private  http:HttpClient) { }
+                private postulantService: PostulantService,
+                private formB:FormBuilder,
+                private route:ActivatedRoute,
+                private  http:HttpClient,
+                private modalService: NgbModal
+                ) { }
+
+
+//--------------------------------------------------Popup pour les personnes tirées---------------------------------------------------------------------------------------------       
+
+closeResult!: string;
+  
+open(content:any) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+    
+}
+}
+
+
+
+
+
+
+
+
+
+
 
 // La methode initialiser
+
+
+
+// actualise(lb:string):void
+// {
+//   setTimeout(()=>{
+//     this.serviceTirage.recupererTiragesParLibeller(lb);
+//   }, 1000)
+// }
 
   ngOnInit(): void {
 
@@ -85,24 +145,48 @@ nombre:any;
 
             this.message = data
             console.log("je suis le retour "+data);
+              this.ressetForm();
           }
          
         ) 
+      
+
   }
 
- 
 
-  faireTirage(){
-console.log("Ma liste "+this.select_liste);
-// this.serviceTirage.faireTirages(this.tirages,this.select_liste,this.nbre_postulant_tirer).subscribe(
+// ------------------------------------------------------------------Faire un tirage ici
+
+ressetForm(){
+  this.nbre_postulant_tirer = 0;
+  this.select_liste = '';
+  this.tirage.libelle_tirage = '';
+  this.file = '';
+  this.importer.libelle = '';
+}
+
+faireTirage(){
+
 this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
-data=>{
-        this.adama=data;
-        
-        console.log("Mes tirages faites = "+this.adama);
-      }
+  
+data=>{  
+// --------------Recuperer les postulants
+this.tirageRecuperer = this.serviceTirage.recupererTiragesParLibeller(this.tirage.libelle_tirage).subscribe(
+  data=>{
+    this.unePersonnes = data;
+   
+  }
+ )
+ this.ressetForm();
+
+  // // console.log("1_ Apres Mes tirages faites = "+this.actualise(this.tirage.libelle_tirage));
+  
+  // console.log("2 _ Apres Mes tirages faites = "+this.tirageRecuperer.nom_postulant);
+  
+  // console.log("1 _ Apres Mes tirages faites = "+this.unePersonnes[0].nombreTirage);
+   }
     )
-     }
+
+}
    
 
 

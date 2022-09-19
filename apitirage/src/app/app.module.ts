@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes,RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -12,8 +12,11 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ListeTirageComponent } from './liste-tirage/liste-tirage.component';
 import { DetailsComponent } from './details/details.component';
 import { TirageDetailsComponent } from './tirage-details/tirage-details.component';
+
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgbModalModule
+
     
      
   ],

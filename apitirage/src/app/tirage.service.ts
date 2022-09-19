@@ -43,8 +43,8 @@ getUnTirage(listeID: number) : Observable<Tirage[]>{
 }
 // Affiche les personnes tirées pour un tirage données
 // 
-personnesTirer(tirages_id_tirage:number): Observable<Tirage[]>{
-  return this.http.get<Tirage[]>("http://localhost:8080/tirage/personnes/"+`${tirages_id_tirage}`)
+personnesTirer(tirages_id_tirage:number): Observable<Object>{
+  return this.http.get<Object>("http://localhost:8080/tirage/personnes/"+`${tirages_id_tirage}`)
 }
 
 
@@ -67,7 +67,7 @@ getListeTirer():Observable<object>{
 }
 
 
-faireTirages(tirage1:Tirages,libelleTirage:string,nbrePt:BigInt):Observable<object>{
+faireTirages(tirage1:Tirages,libelleTirage:string,nbrePt:number):Observable<object>{
   // this.tirages.libelle_tirage=libelle_tirage;
   return this.http.post(`http://localhost:8080/tirage/faireTirage/${libelleTirage}/${nbrePt}`,tirage1);
 }
@@ -81,7 +81,12 @@ recupererTirages(id_tirage:number):Observable<object>{
   return this.http.get(`http://localhost:8080/tirage/recuperer/${id_tirage}`)
 }
 
+//  ICI JE VEUX RECUPERER LES TIRAGES PAR LEURS LIBELLE POUR AFFICHER LES PERSONNES TIREES
 
+recupererTiragesParLibeller(libelle_tirage:string):Observable<Tirage>
+{
+  return this.http.get<Tirage>(`http://localhost:8080/tirage/libelle/${libelle_tirage}`)
+}
 
 
 
