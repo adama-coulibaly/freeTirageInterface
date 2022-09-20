@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { TirageService } from '../tirage.service';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +15,7 @@ export interface Tirage{
   libelle_tirage: string;
   nbre_postulant_tirer:string;
 }
+
 
 @Component({
   selector: 'app-details',
@@ -55,6 +57,7 @@ export class DetailsComponent implements OnInit {
         console.log("NombreListe "+this.tirageSurList);
      });
     
+
   }
 
 }
