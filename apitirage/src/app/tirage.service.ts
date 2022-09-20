@@ -94,8 +94,8 @@ recupererTiragesParLibeller(libelle_tirage:string):Observable<Tirage>
 }
 
 // Compter le contenu d'une seule liste
-compterListe(idliste:number){
-  return this.http.get(`http://localhost:8080/postulant/lireListe/${idliste}`)
+compterListe(libelle:string){
+  return this.http.get(`http://localhost:8080/postulant/lireListe/${libelle}`)
 }
 
 

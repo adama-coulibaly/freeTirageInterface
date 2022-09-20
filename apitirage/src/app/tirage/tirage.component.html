@@ -30,7 +30,7 @@
                           </tr>
                           <tr>
                               <td>Donner un nombre</td>
-                              <td> <input type="number" class="form-control"  [(ngModel)]="nbre_postulant_tirer" name="nbre_postulant_tirer" min="1" placeholder="10"></td>
+                              <td> <input type="number" class="form-control"  [(ngModel)]="nbre_postulant_tirer" name="nbre_postulant_tirer" min="1"  max="{{total}}" placeholder="10"></td>
                           </tr>
                           <tr>
                                           <td for="libelle_tirage">Libellé du tirage</td>
@@ -100,16 +100,25 @@
         <h4 class="modal-title" id="modal-basic-title">Informations</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">×</span>
-        </button>
+        </button> 
       </div>
+
+
+  <!-- Nombre a tirés superieur a la liste -->
+  <ng-template #erreursTS *ngIf="erreursTS">
+    <div align="center"> <strong>{{erreursTS}}</strong></div>
+</ng-template>
+
 <!--                Formulaire valides                                 -->
-      <div class="modal-body" *ngIf="unePersonnes; else erreur;" align="center">
+      <div class="modal-body" *ngIf="unePersonnes; else erreur " align="center">
            <strong >Tirage effectué avec succès</strong>
       </div>
 <!--                Formulaire vides                                 -->
         <ng-template #erreur>
         <div align="center"><strong> Veuilleir bien renseigner tous les champs</strong></div>
        </ng-template>
+       
+     
     
       <div class="modal-footer">
         <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"  *ngIf="!erreur "  >Voirs >></button>

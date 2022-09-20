@@ -24,6 +24,8 @@ export class TirageComponent implements OnInit {
   recupererUneListe:any;
   maListe:any;
   contenu:any;
+  total:any
+  erreursTS:any
   
   // mymodal:any
 
@@ -167,52 +169,61 @@ ressetForm(){
 }
 
 faireTirage(){
+  // oN PREND ICI LE LIBELLE DU TIRAGE POUR POUVOIR COMPTER LE NOMBTRE DE PERSONNE SUR UNE LISTE
+  
+  if (this.nbre_postulant_tirer <= this.total) {
 
-  this.serviceTirage.listeParLibelle(this.select_liste).subscribe(data=>{
-    this.recupererUneListe = data
-    this.contenu = this.serviceTirage.compterListe(this.recupererUneListe.idliste)
+  this.contenu = this.serviceTirage.compterListe(this.select_liste)
+  .subscribe(data=>{
+    this.total = data
+    // if (this.nbre_postulant_tirer <= this.total) {
 
-    console.log("une liste :"+this.recupererUneListe.idliste)
-    console.log("------------- "+ this.contenu)
-})
 
-// -------------Faire un tirage ici
+      // -------------Faire un tirage ici
 this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
   
-data=>{
- 
-
-// --------------Recuperer les postulants
-this.tirageRecuperer = this.serviceTirage.recupererTiragesParLibeller(this.tirage.libelle_tirage).subscribe(
   data=>{
-    this.unePersonnes = data;
-    // --------------Recuperer l'id du tirage effectuer
-    for(let id_tirage of this.unePersonnes)
-    
-      this.recupererUnTirage = id_tirage[6];
-    
-    // --------------Recuperer l'id du tirage effectuer
-    
-   this.ressetForm();
-  } 
- )
+   
+  // --------------Recuperer les postulants
+  this.tirageRecuperer = this.serviceTirage.recupererTiragesParLibeller(this.tirage.libelle_tirage).subscribe(
+    data=>{
+      this.unePersonnes = data;
+      // --------------Recuperer l'id du tirage effectuer
+      for(let id_tirage of this.unePersonnes)
+      
+        this.recupererUnTirage = id_tirage[6];
+      
+      // --------------Recuperer l'id du tirage effectuer
+      
+     this.ressetForm();
+    } 
+   )
+  
+  
+     }
+      )
 
 
-   }
-    )
-
-}
+  //   } else {
+  //     this.erreursTS = this.nbre_postulant_tirer+" Est supperieir aux personnes existantes !"
+  //  }
    
 
 
+    console.log("------------- je suis dedans "+ this.total)
+  })
 
+  this.serviceTirage.listeParLibelle(this.select_liste).subscribe(data=>{
+    this.recupererUneListe = data
+    
 
+})
 
-
-
-
-
+  }
+else {
+  this.erreursTS = this.nbre_postulant_tirer+" Est supperieir aux personnes existantes !"
 }
+}}
 function fileChange(e: any, any: any) {
   throw new Error('Function not implemented.');
 }
