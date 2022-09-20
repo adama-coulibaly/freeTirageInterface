@@ -38,7 +38,15 @@
                           </tr>
                           <tr>
                               <td><input type="submit" value="Trier" class="form-control btn btn-outline-primary" (click)="open(mymodal)"></td>
-                          </tr>
+
+                              <div *ngIf="unePersonnes">
+                                  <td>
+                                <a class="form-control btn btn-success" [routerLink]="['/deatilsTirages',recupererUnTirage]">Voir Tirage
+
+                                </a>
+                              
+                              </div>
+                            </tr>
           
                       </tbody>
                 </table>
@@ -85,41 +93,32 @@
 
 
 
+   
 
-
-        <ng-template let-modal  #mymodal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Les personnes tirées</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body" *ngIf="unePersonnes; else erreur">
-           
-            <table >
-                <thead>
-                    <th>Nom</th><th>Prenom</th> <th>Email</th>  <th>Numéro</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let debuter of unePersonnes ">
-                        <td>{{debuter[1]}}</td>
-                        <td>{{debuter[2]}}</td>
-                        <td>{{debuter[4]}}</td>
-                        <td>{{debuter[0]}}</td> 
-                        <td>{{debuter[3]}}</td>
-                       
-                    </tr>
-                </tbody>
-            </table>
-    
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
-          </div>
-        </ng-template>
-
+    <ng-template let-modal  #mymodal>
+      <div class="modal-header" >
+        <h4 class="modal-title" id="modal-basic-title">Informations</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+<!--                Formulaire valides                                 -->
+      <div class="modal-body" *ngIf="unePersonnes; else erreur;" align="center">
+           <strong >Tirage effectué avec succès</strong>
+      </div>
+<!--                Formulaire vides                                 -->
         <ng-template #erreur>
-               <td> Veuilleir bien renseigner les champs</td>
-        </ng-template>
+        <div align="center"><strong> Veuilleir bien renseigner tous les champs</strong></div>
+       </ng-template>
+    
+      <div class="modal-footer">
+        <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"  *ngIf="!erreur "  >Voirs >></button>
+      </div>
+    </ng-template>
+
+
+
+      
 
 </main>
+

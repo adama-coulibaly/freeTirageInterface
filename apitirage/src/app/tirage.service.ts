@@ -65,16 +65,21 @@ getListeTirer():Observable<object>{
   return this.http.get(this.listeT);
 
 }
-
-
 faireTirages(tirage1:Tirages,libelleTirage:string,nbrePt:number):Observable<object>{
   // this.tirages.libelle_tirage=libelle_tirage;
   return this.http.post(`http://localhost:8080/tirage/faireTirage/${libelleTirage}/${nbrePt}`,tirage1);
 }
-// Recuperer une liste
+
+// Recuperer une liste par son ID
 recupererListe(idliste:number):Observable<object>{
   return this.http.get(`http://localhost:8080/listepostulant/listeRecuperer/${idliste}`)
 }
+// Recuperer une liste par son libelle
+listeParLibelle(libelle:any):Observable<any>{
+  return this.http.get(`http://localhost:8080/listepostulant/uneListes/${libelle}`)
+}
+
+
 
 // Recupere un tirages 
 recupererTirages(id_tirage:number):Observable<object>{
@@ -88,6 +93,10 @@ recupererTiragesParLibeller(libelle_tirage:string):Observable<Tirage>
   return this.http.get<Tirage>(`http://localhost:8080/tirage/libelle/${libelle_tirage}`)
 }
 
+// Compter le contenu d'une seule liste
+compterListe(idliste:number){
+  return this.http.get(`http://localhost:8080/postulant/lireListe/${idliste}`)
+}
 
 
 

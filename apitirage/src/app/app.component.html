@@ -5,10 +5,11 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="assets/logo.png" height="50" alt="MDB Logo" loading="lazy" />
+                FreeTirages
             </a>
             <ul class="navbar-nav ms-auto d-flex flex-row">
                 <li>
-                    <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Free Tirage</a>
+                    <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>{{heures | date: "dd MMMM yyyy HH:MM : SS a z" | uppercase}}</a>
                 </li>
 
             </ul>
@@ -43,11 +44,11 @@
                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Liste
                                     postulants</span> </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="test" class="nav-link px-0 align-middle" routerLinkActive="active">
                                 <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Test</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <hr>
                 </div>

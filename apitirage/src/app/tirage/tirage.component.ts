@@ -20,6 +20,10 @@ export class TirageComponent implements OnInit {
 
   listeTirages : any;
   active = true;
+  recupererUnTirage:any;
+  recupererUneListe:any;
+  maListe:any;
+  contenu:any;
   
   // mymodal:any
 
@@ -145,11 +149,9 @@ private getDismissReason(reason: any): string {
 
             this.message = data
             console.log("je suis le retour "+data);
-              this.ressetForm();
           }
          
         ) 
-      
 
   }
 
@@ -161,28 +163,41 @@ ressetForm(){
   this.select_liste = '';
   this.tirage.libelle_tirage = '';
   this.file = '';
-  this.importer.libelle = '';
+  this.importer.libelle = ''
 }
 
 faireTirage(){
 
+  this.serviceTirage.listeParLibelle(this.select_liste).subscribe(data=>{
+    this.recupererUneListe = data
+    this.contenu = this.serviceTirage.compterListe(this.recupererUneListe.idliste)
+
+    console.log("une liste :"+this.recupererUneListe.idliste)
+    console.log("------------- "+ this.contenu)
+})
+
+// -------------Faire un tirage ici
 this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
   
-data=>{  
+data=>{
+ 
+
 // --------------Recuperer les postulants
 this.tirageRecuperer = this.serviceTirage.recupererTiragesParLibeller(this.tirage.libelle_tirage).subscribe(
   data=>{
     this.unePersonnes = data;
-   
-  }
+    // --------------Recuperer l'id du tirage effectuer
+    for(let id_tirage of this.unePersonnes)
+    
+      this.recupererUnTirage = id_tirage[6];
+    
+    // --------------Recuperer l'id du tirage effectuer
+    
+   this.ressetForm();
+  } 
  )
- this.ressetForm();
 
-  // // console.log("1_ Apres Mes tirages faites = "+this.actualise(this.tirage.libelle_tirage));
-  
-  // console.log("2 _ Apres Mes tirages faites = "+this.tirageRecuperer.nom_postulant);
-  
-  // console.log("1 _ Apres Mes tirages faites = "+this.unePersonnes[0].nombreTirage);
+
    }
     )
 

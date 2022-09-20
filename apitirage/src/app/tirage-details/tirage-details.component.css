@@ -10,3 +10,7 @@ table{
 th{
    background: #FF6B00;color: #FFFFFF;
 }
+.detailsEntete
+{
+   align-items: center;
+}
