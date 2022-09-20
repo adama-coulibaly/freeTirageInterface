@@ -13,7 +13,7 @@
       <div class="container row">
 
         <div class="col-8">
-            <form  (ngSubmit)="faireTirage()" #FormulaireTirage="ngForm">
+            <form  (ngSubmit)="faireTirage()" #FormulaireTirage="ngForm" >
                 <table>
                       <tbody>
 
@@ -26,8 +26,6 @@
                                         </option>
                                     </select>
 
-                                    <!-- <input type="text" class="form-control"  [(ngModel)]="select_liste" name="select_liste"  placeholder="Liste a choisir"> -->
-
                               </td>
                           </tr>
                           <tr>
@@ -39,21 +37,31 @@
                                           <td><input type="text" id="libelle_tirage"  [(ngModel)]="tirage.libelle_tirage" class="form-control" placeholder="Liste apprenants" name="libelleTirage"></td>
                           </tr>
                           <tr>
-                              <td><input type="submit" value="Trier" class="form-control btn btn-primary"></td>
-                          </tr>
+                              <td><input type="submit" value="Trier" class="form-control btn btn-outline-primary" (click)="open(mymodal)"></td>
+
+                              <div *ngIf="unePersonnes">
+                                  <td>
+                                <a class="form-control btn btn-success" [routerLink]="['/deatilsTirages',recupererUnTirage]">Voir Tirage
+
+                                </a>
+                              
+                              </div>
+                            </tr>
           
                       </tbody>
                 </table>
           </form>
         </div>
 
+   
 <!-- Importer un fichier csv ici -->
         
        
         <div class="col-4">
             <form [formGroup]="formulairesImp" (ngSubmit)="enregistreDonner()">
                 <table>
-                      <tbody>
+                      <tbody >
+                    
                           <tr>
                             <td>
                                 <input type="file" name="file" class="form-control"  formControlName="file" (change)="fileChange($event)">
@@ -85,4 +93,32 @@
 
 
 
+   
+
+    <ng-template let-modal  #mymodal>
+      <div class="modal-header" >
+        <h4 class="modal-title" id="modal-basic-title">Informations</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+<!--                Formulaire valides                                 -->
+      <div class="modal-body" *ngIf="unePersonnes; else erreur;" align="center">
+           <strong >Tirage effectué avec succès</strong>
+      </div>
+<!--                Formulaire vides                                 -->
+        <ng-template #erreur>
+        <div align="center"><strong> Veuilleir bien renseigner tous les champs</strong></div>
+       </ng-template>
+    
+      <div class="modal-footer">
+        <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"  *ngIf="!erreur "  >Voirs >></button>
+      </div>
+    </ng-template>
+
+
+
+      
+
 </main>
+

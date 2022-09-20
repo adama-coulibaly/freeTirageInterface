@@ -7,44 +7,117 @@ import { Importer } from '../importer';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tirage',
   templateUrl: './tirage.component.html',
   styleUrls: ['./tirage.component.css']
+  
+  
 })
 export class TirageComponent implements OnInit {
 
   listeTirages : any;
+  active = true;
+  recupererUnTirage:any;
+  recupererUneListe:any;
+  maListe:any;
+  contenu:any;
+  
+  // mymodal:any
+
+
+  mesListe!:[];
+
+
   
 
   // Les attributs pour le formulaire d'importation
   formulairesImp!:FormGroup;
   // Les attributs pour le formulaire de tirage
 
-  adama:any;
-  tirages:any;
+
   select_liste!:any;
-  libelle_tirage!:string;
-  nbre_postulant_tirer!:bigint;
+
+
+
+  nbre_postulant_tirer!:number;
 
   unePersonnes!:any
 
 nombre:any;
   file!:any;
   importer!:Importer
+  message!: any;
+
+  tirage_cree!: any;
+
+  postulants!: any;
 
   tirage: Tirages = new Tirages();
 
+  tirageRecuperer!:any;
+ 
+
   
+
   constructor(private serviceTirage: TirageService,
-                private postulantService: PostulantService,private formB:FormBuilder,private route:ActivatedRoute,private  http:HttpClient) { }
+                private postulantService: PostulantService,
+                private formB:FormBuilder,
+                private route:ActivatedRoute,
+                private  http:HttpClient,
+                private modalService: NgbModal
+                ) { }
+
+
+//--------------------------------------------------Popup pour les personnes tirées---------------------------------------------------------------------------------------------       
+
+closeResult!: string;
+  
+open(content:any) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+    
+}
+}
+
+
+
+
+
+
+
+
+
+
 
 // La methode initialiser
 
+
+
+// actualise(lb:string):void
+// {
+//   setTimeout(()=>{
+//     this.serviceTirage.recupererTiragesParLibeller(lb);
+//   }, 1000)
+// }
+
   ngOnInit(): void {
 
-    
+    mesListe: ["f"];
 
 
     // Recuperer la liste des tirages
@@ -69,33 +142,66 @@ nombre:any;
   enregistreDonner(){
  
         this.importer=this.formulairesImp.value
-        this.serviceTirage.addliste(this.importer.libelle,this.file).subscribe(
+
+       this.serviceTirage.addliste(this.importer.libelle,this.file).subscribe(
           data=>{
-            this.formulairesImp.reset()
+            this.formulairesImp.reset();
+
+            this.message = data
+            console.log("je suis le retour "+data);
           }
-        )
+         
+        ) 
+
   }
 
-    viderChampsTirage(){
-        v_select:  " ";
-        v_Tirage: " ";
-        v_nbre: " ";
 
-        
+// ------------------------------------------------------------------Faire un tirage ici
 
-    }
+ressetForm(){
+  this.nbre_postulant_tirer = 0;
+  this.select_liste = '';
+  this.tirage.libelle_tirage = '';
+  this.file = '';
+  this.importer.libelle = ''
+}
 
-  faireTirage(){
-console.log("Ma liste "+this.select_liste);
-// this.serviceTirage.faireTirages(this.tirages,this.select_liste,this.nbre_postulant_tirer).subscribe(
+faireTirage(){
+
+  this.serviceTirage.listeParLibelle(this.select_liste).subscribe(data=>{
+    this.recupererUneListe = data
+    this.contenu = this.serviceTirage.compterListe(this.recupererUneListe.idliste)
+
+    console.log("une liste :"+this.recupererUneListe.idliste)
+    console.log("------------- "+ this.contenu)
+})
+
+// -------------Faire un tirage ici
 this.serviceTirage.faireTirages(this.tirage,this.select_liste,this.nbre_postulant_tirer).subscribe(   
+  
 data=>{
-        this.adama=data;
-        this.viderChampsTirage();
-        console.log("Mes tirages faites = "+this.adama);
-      }
+ 
+
+// --------------Recuperer les postulants
+this.tirageRecuperer = this.serviceTirage.recupererTiragesParLibeller(this.tirage.libelle_tirage).subscribe(
+  data=>{
+    this.unePersonnes = data;
+    // --------------Recuperer l'id du tirage effectuer
+    for(let id_tirage of this.unePersonnes)
+    
+      this.recupererUnTirage = id_tirage[6];
+    
+    // --------------Recuperer l'id du tirage effectuer
+    
+   this.ressetForm();
+  } 
+ )
+
+
+   }
     )
-     }
+
+}
    
 
 

@@ -43,8 +43,8 @@ getUnTirage(listeID: number) : Observable<Tirage[]>{
 }
 // Affiche les personnes tirées pour un tirage données
 // 
-personnesTirer(tirages_id_tirage:number): Observable<Tirage[]>{
-  return this.http.get<Tirage[]>("http://localhost:8080/tirage/personnes/"+`${tirages_id_tirage}`)
+personnesTirer(tirages_id_tirage:number): Observable<Object>{
+  return this.http.get<Object>("http://localhost:8080/tirage/personnes/"+`${tirages_id_tirage}`)
 }
 
 
@@ -54,7 +54,7 @@ getNombreTirage() : Observable<object>{
 
 }
 // Faire l'importer du fichier
-addliste(libelle:string,file:any):Observable<void>{
+addliste(libelle:string,file:any):Observable<any>{
   let data = new FormData();
   data.append("file",file)
   return this.http.post<void>(`http://localhost:8080/postulant/upload/${libelle}`,data);
@@ -65,24 +65,38 @@ getListeTirer():Observable<object>{
   return this.http.get(this.listeT);
 
 }
-
-
-faireTirages(tirage1:Tirages,libelleTirage:string,nbrePt:BigInt):Observable<object>{
+faireTirages(tirage1:Tirages,libelleTirage:string,nbrePt:number):Observable<object>{
   // this.tirages.libelle_tirage=libelle_tirage;
   return this.http.post(`http://localhost:8080/tirage/faireTirage/${libelleTirage}/${nbrePt}`,tirage1);
 }
-// Recuperer une liste
+
+// Recuperer une liste par son ID
 recupererListe(idliste:number):Observable<object>{
   return this.http.get(`http://localhost:8080/listepostulant/listeRecuperer/${idliste}`)
 }
+// Recuperer une liste par son libelle
+listeParLibelle(libelle:any):Observable<any>{
+  return this.http.get(`http://localhost:8080/listepostulant/uneListes/${libelle}`)
+}
+
+
 
 // Recupere un tirages 
 recupererTirages(id_tirage:number):Observable<object>{
   return this.http.get(`http://localhost:8080/tirage/recuperer/${id_tirage}`)
 }
 
+//  ICI JE VEUX RECUPERER LES TIRAGES PAR LEURS LIBELLE POUR AFFICHER LES PERSONNES TIREES
 
+recupererTiragesParLibeller(libelle_tirage:string):Observable<Tirage>
+{
+  return this.http.get<Tirage>(`http://localhost:8080/tirage/libelle/${libelle_tirage}`)
+}
 
+// Compter le contenu d'une seule liste
+compterListe(idliste:number){
+  return this.http.get(`http://localhost:8080/postulant/lireListe/${idliste}`)
+}
 
 
 
